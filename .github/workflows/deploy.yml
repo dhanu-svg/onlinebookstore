@@ -2,7 +2,8 @@ name: Deploy Vite to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -20,9 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-     - uses: actions/setup-node@v4
-  with:
-    node-version: 24
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
 
       - run: npm install
       - run: npm run build
@@ -32,11 +33,12 @@ jobs:
           path: ./dist
 
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
 
     steps:
       - id: deployment
