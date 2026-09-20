@@ -1,0 +1,6 @@
+{
+  "name": "Shelf Space",
+  "description": "Explore and read classic literature online with personal reading shelves, reading history, and book collection on Shelf Space.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
